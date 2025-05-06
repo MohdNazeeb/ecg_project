@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECG Monitoring</title>
+    <script src="https://cdn.jsdelivr.net/npm/socket.io-client@4.0.0/dist/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Live ECG Monitoring</h1>
+    <canvas id="ecgChart" width="400" height="200"></canvas>
+
+    <script>
+        // Connect to the socket server
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        // Set up the chart
+        var ctx = document.getElementById('ecgChart').getContext('2d');
+        var data = {
+            labels: [], // Time or sequence for each data point
+            datasets: [{
+                label: 'ECG Data',
+                data: [],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+                fill: false
+            }]
+        };
+        var options = {
+            responsive: true,
+            animation: {
+                duration: 0
+            },
+            scales: {
+                x: {
+                    type: 'linear',
+                    position: 'bottom'
+                }
+            }
+        };
+        var ecgChart = new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: options
+        });
+
+        // Listen for data from the server (Socket.IO)
+        socket.on('ecg_data', function (data) {
+            // Push the new data point into the chart
+            var currentTime = Date.now();
+            ecgChart.data.labels.push(currentTime);
+            ecgChart.data.datasets[0].data.push(data.value);
+
+            // Limit the data array length to avoid overloading the chart
+            if (ecgChart.data.labels.length > 100) {
+                ecgChart.data.labels.shift();
+                ecgChart.data.datasets[0].data.shift();
+            }
+
+            // Update the chart with the new data
+            ecgChart.update();
+        });
+    </script>
+</body>
+</html>

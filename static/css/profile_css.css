@@ -1,0 +1,116 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: url('nar.jpg') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: inherit;
+  filter: blur(6px);
+  z-index: -1;
+}
+
+.container {
+  max-width: 450px;
+  margin: 30px auto;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(255, 0, 0, 0.1);
+  border: 1px solid #ffcccc;
+  backdrop-filter: blur(3px);
+}
+
+.profile-header, .edit-profile-header {
+  text-align: center;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #cc0000;
+  margin-bottom: 10px;
+}
+
+h2, h4 {
+  color: #cc0000;
+}
+
+p {
+  color: #555;
+}
+
+button {
+  background-color: #cc0000;
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #990000;
+}
+
+.change-pic-btn {
+  background-color: #ff6666;
+  margin-top: 8px;
+}
+
+.back-btn {
+  background-color: transparent;
+  color: #cc0000;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border: none;
+}
+
+ul.options {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+ul.options li {
+  padding: 12px 10px;
+  border-bottom: 1px solid #ffe5e5;
+  cursor: pointer;
+  color: #333;
+}
+
+ul.options li:hover {
+  background-color: #fff0f0;
+}
+
+.edit-form input,
+.edit-form select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid #ffcccc;
+  background: #fff8f8;
+}
+
+.save-btn {
+  background-color: #cc0000;
+}
+
+.hidden {
+  display: none;
+}

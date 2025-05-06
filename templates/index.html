@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HeartCare Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="container" id="container">
+    <!-- Sign Up -->
+    <div class="form-container sign-up-container">
+      <form action="/signup" method="post">
+        <h2>Join HeartCare</h2>
+        <input type="text" placeholder="Full Name" name="username" required />
+        <input type="email" placeholder="Email" name="email" required />
+        <input type="password" placeholder="Create Password" name="password" required />
+        <!-- Display signup error if exists -->
+        {% if error %}
+          <p class="error-message">{{ error }}</p>
+        {% endif %}
+        <button type="submit">Create Account</button>
+      </form>
+    </div>
+
+    <!-- Sign In -->
+    <div class="form-container sign-in-container">
+      <form action="/login" method="post">
+        <h2>Welcome Back ❤</h2>
+        <input type="text" placeholder="Username" name="username" required />
+        <input type="password" placeholder="Password" name="password" required />
+        <!-- Display login error if exists -->
+        {% if error %}
+          <p class="error-message">{{ error }}</p>
+        {% endif %}
+        <a href="#">Forgot your password?</a>
+        <button type="submit">Log In</button>
+      </form>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h2>Your Heart Matters</h2>
+          <p>Already have a HeartCare account? Log in to access your health dashboard.</p>
+          <button class="ghost" id="signIn">Log In</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h2>Welcome to HeartCare</h2>
+          <p>Monitor your heart health, track appointments, and connect with professionals.</p>
+          <button class="ghost" id="signUp">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script/script.js') }}"></script>
+</body>
+</html>
