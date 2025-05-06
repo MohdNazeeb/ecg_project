@@ -1,0 +1,74 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile Page</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/profile_css.css') }}" />
+</head>
+<body>
+  <!-- Profile View -->
+  <div class="container" id="profileView">
+    <div class="profile-header">
+      <img src="useer\profile.jpeg" alt="Profile" class="profile-pic" />
+      <h2>{{ username }}</h2>
+      <p>{{ gmail }}</p>      
+      <button onclick="showEditForm()">Edit Profile</button>
+    </div>
+
+    <ul class="options">
+        <h4>General</h4>
+      <li>Added Members</li>
+      <li>Change Language</li>
+      <li>Subscription</li>
+      <li>Help & Support</li>
+      <h4>
+        App Settings
+      </h4>
+      <li>UI Mode</li>
+      <li>ECG Settings</li>
+      <h4>About</h4>
+      <li>App Version</li>
+      <li>Privacy Policy</li>
+      <li>Terms & Conditions</li>
+    </ul>
+
+    <!-- <p class="version">Done</p> -->
+    <button class="save-btn">Done</button>
+</div>
+
+  <!-- Edit Profile View -->
+  <div class="container hidden" id="editView">
+    <button onclick="goBack()">← Back</button>
+    <div class="edit-profile-header">
+        <img src="https://via.placeholder.com/100" alt="Profile" class="profile-pic" id="profilePicEdit" />
+        <input type="file" id="uploadPic" accept="image/*" onchange="changeProfilePicture()" style="display:none" />
+        <button onclick="document.getElementById('uploadPic').click()" class="change-pic-btn">Change Profile Picture</button>
+      </div>
+    <h2>Edit Profile</h2>
+
+    <form class="edit-form">
+      <input type="text" placeholder="First Name" value="Md. Amaan" />
+      <input type="text" placeholder="Last Name" value="Mansuri" />
+      <input type="text" placeholder="Username" value="@Aman" />
+      <input type="email" placeholder="Email" value="amaan208@gmail.com" />
+      <input type="tel" placeholder="Phone Number" value="84679-28528" />
+      <select>
+        <option>Age</option>
+      </select>
+      <select>
+        <option>Gender</option>
+      </select>
+      <select>
+        <option>Height</option>
+      </select>
+      <select>
+        <option>weight</option>
+      </select>
+      <button class="save-btn">Save Change</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html> {% endcomment %}
